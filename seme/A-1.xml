@@ -1,0 +1,98 @@
+<zahtev_za_unosenje_u_evidenciju_i_deponovanje_autorskih_dela>
+    <podaci_o_zavodu>
+        <naziv>Zavod za intelektualnu svojinu</naziv>
+        <adresa>
+            <drzava>Republika Srbija</drzava>
+            <mesto>Beograd</mesto>
+            <ulica>Kneginje Ljubice</ulica>
+            <broj>5</broj>
+        </adresa>
+    </podaci_o_zavodu>
+
+        <podaci_o_podnosiocu>
+        <podnosilac lice="fizicko">
+            <ime>Veljko</ime>
+            <prezime>Radic</prezime>
+            <adresa>
+                <ulica>Batar</ulica>
+                <broj>1</broj>
+                <grad>Brasina</grad>
+                <postanski_broj>15317</postanski_broj>
+            </adresa>
+            <drzavljanstvo>Srpsko</drzavljanstvo>
+        </podnosilac>
+        <podnosilac lice="pravno">
+            <poslovno_ime>STR Bane</poslovno_ime>
+            <sediste>Donja Borina</sediste>
+        </podnosilac>
+        <telefon>054984654</telefon>
+        <email>veljko@gmail.com</email>
+        <pseudonim_ili_znak_autora required="false">VR23</pseudonim_ili_znak_autora>
+        </podaci_o_podnosiocu>
+        
+        <punomocnik required="false">
+            <ime>Ivo</ime>
+            <prezime>Ivic</prezime>
+            <adresa>
+                <ulica>neko</ulica>
+                <broj>21</broj>
+                <grad>Loznica</grad>
+                <postanski_broj>15300</postanski_broj>
+            </adresa>
+        </punomocnik>
+        
+        <podaci_o_autorskom_delu>
+            <naslov required="true">Naslov</naslov>
+            <alternativni_naziv required='false'>Relps</alternativni_naziv>
+            <podaci_o_izvornom_delu>
+                <naslov>Melps</naslov>
+                <autor>Cibo</autor>
+            </podaci_o_izvornom_delu>
+            <vrsta_autorskog_dela required="true">Drama</vrsta_autorskog_dela>
+            <forma_autorskog_dela required="true">Pisana</forma_autorskog_dela>
+            <stvoreno_u_radnom_odnosu>DA</stvoreno_u_radnom_odnosu>
+            <nacin_koriscenja_autorskog_dela>221</nacin_koriscenja_autorskog_dela>
+        </podaci_o_autorskom_delu>
+        
+        <podaci_o_zivom_autoru>
+            <ime>Veljko</ime>
+            <prezime>Radic</prezime>
+            <adresa>
+                <ulica>Batar</ulica>
+                <broj>1</broj>
+                <grad>Brasina</grad>
+                <postanski_broj>15371</postanski_broj>
+            </adresa>
+            <drzavljanstvo>Srpsko</drzavljanstvo>
+            <pseudonim>VR23</pseudonim>
+        </podaci_o_zivom_autoru>
+        
+        <podaci_o_mrtvom_autoru>
+            <ime>Ivo</ime>
+            <prezime>Ivic</prezime>
+            <adresa>
+                <ulica>wergewr</ulica>
+                <broj>26</broj>
+                <grad>Negotin</grad>
+                <postanski_broj>38515</postanski_broj>
+            </adresa>
+            <drzavljanstvo>Vlasko</drzavljanstvo>
+            <pseudonim>lir</pseudonim>
+            <godina_smrti>2095</godina_smrti>
+        </podaci_o_mrtvom_autoru>
+        
+        <podaci_o_autoru tip="anoniman"></podaci_o_autoru>
+        
+        <prilozi>
+            <opis_autorskog_dela>Le egeg</opis_autorskog_dela>
+            <primer_autorskog_dela>primerrr</primer_autorskog_dela>
+        </prilozi>
+    
+    <podaci_o_zahtevu>
+        <datum_podnosenja required="true">07.12.2022.</datum_podnosenja>
+        <broj_prijave required="true">A-1-8575</broj_prijave>
+    </podaci_o_zahtevu>
+        
+    </zahtev_za_unosenje_u_evidenciju_i_deponovanje_autorskih_dela>
+    
+    

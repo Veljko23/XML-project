@@ -1,0 +1,108 @@
+<zahtev_za_priznanje_ziga>
+    <podaci_o_zavodu>
+        <naziv>Zavod za intelektualnu svojinu</naziv>
+        <adresa>
+            <drzava>Republika Srbija</drzava>
+            <mesto>Beograd</mesto>
+            <ulica>Kneginje Ljubice</ulica>
+            <broj>5</broj>
+        </adresa>
+    </podaci_o_zavodu>
+    
+        <podaci_o_podnosiocu>
+            <podaci lice="fizicko">
+            <ime></ime>
+            <prezime></prezime>
+            <adresa>
+                <ulica></ulica>
+                <broj_ulice></broj_ulice>
+                <postanski_broj></postanski_broj>
+                <mesto></mesto>
+                <drzava></drzava>
+            </adresa>
+            </podaci>
+            
+            <podaci lice="pravno">
+                <ime></ime>
+                <adresa>
+                    <ulica></ulica>
+                    <broj_ulice></broj_ulice>
+                    <postanski_broj></postanski_broj>
+                    <mesto></mesto>
+                    <drzava></drzava>
+                </adresa>
+             </podaci>
+                <kontakt>
+                    <telefon></telefon>
+                    <email></email>
+                    <faks></faks>
+                </kontakt>
+            
+            
+        </podaci_o_podnosiocu>
+        
+        <zajednicki_predstavnik>
+            <podaci lice="fizicko"></podaci>
+            <podaci lice="pravno"></podaci>
+            <kontakt>
+                <telefon></telefon>
+                <email></email>
+                <faks></faks>
+            </kontakt>
+        </zajednicki_predstavnik>
+        
+        <podaci_o_znaku>
+            <tipovi_ziga>
+                <induvidualni_zig></induvidualni_zig>
+                <kolektivni_zig></kolektivni_zig>
+                <zig_garancije></zig_garancije>
+            </tipovi_ziga>
+            
+            <tipovi_znaka>
+                <verbalni_znak></verbalni_znak>
+                <graficki_znak></graficki_znak>
+                <kombinovani_znak></kombinovani_znak>
+                <trodimenzionalni_znak></trodimenzionalni_znak>
+                <druga_vrsta_znaka></druga_vrsta_znaka>
+            </tipovi_znaka>
+            
+            <izgled_znaka></izgled_znaka>
+            
+            <naznacenje_boje></naznacenje_boje>
+            <transliteracija_znaka></transliteracija_znaka>
+            <prevod_znaka></prevod_znaka>
+            <opis_znaka></opis_znaka>
+            
+            <brojevi_klasa_robe_i_usluga></brojevi_klasa_robe_i_usluga>
+            
+            
+            <zatrazeno_pravo_prvenstva_i_osnov></zatrazeno_pravo_prvenstva_i_osnov>
+        </podaci_o_znaku>
+    
+    
+    
+        <podaci_o_placanju>
+            <placenje_takse>
+                <osnovna_taksa></osnovna_taksa>
+                <klasa tip=""></klasa>
+                <za_graficko_resenje></za_graficko_resenje>
+                <ukupno></ukupno>
+            </placenje_takse>
+            
+            <potpis_podnosioca_zahteva></potpis_podnosioca_zahteva>
+            <pecat></pecat>
+        </podaci_o_placanju>
+        
+        
+            <prilozi>
+                <primerak_znaka></primerak_znaka>
+                <spisak_robe_i_usluga></spisak_robe_i_usluga>
+                <punomocje></punomocje>
+                <generalno_punomocje_ranije_prilozeno></generalno_punomocje_ranije_prilozeno>
+                <opsti_akt_o_kolektivnom_zigu_ili_zigu_garancije></opsti_akt_o_kolektivnom_zigu_ili_zigu_garancije>
+                <dokaz_o_pravu_prvenstva></dokaz_o_pravu_prvenstva>
+                <dokaz_o_uplati_takse></dokaz_o_uplati_takse>
+            </prilozi>
+           
+    
+</zahtev_za_priznanje_ziga>

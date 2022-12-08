@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="zahtev_za_priznanje_ziga">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="podaci_o_zavodu"/>
+                <xs:element ref="podaci_o_podnosiocu"/>
+                <xs:element ref="zajednicki_predstavnik"/>
+                <xs:element ref="podaci_o_znaku"/>
+                <xs:element ref="podaci_o_placanju"/>
+                <xs:element ref="prilozi"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podaci_o_zavodu">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="naziv" type="xs:string"/>
+                <xs:element name="adresa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="drzava" type="xs:string"/>
+                            <xs:element name="mesto" type="xs:string"/>
+                            <xs:element name="ulica" type="xs:string"/>
+                            <xs:element name="broj" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podnosilac">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="podaci_o_podnosiocu">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:sequence>
+                                <xs:element name="ime" type="xs:string"/>
+                                <xs:element name="prezime" type="xs:string"/>
+                            </xs:sequence>
+                            <xs:sequence>
+                                <xs:element name="poslovno_ime"/>
+                            </xs:sequence>
+                        </xs:sequence>
+                        <xs:attribute name="lice" type="xs:NCName"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="adresa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ulica" type="xs:string"/>
+                            <xs:element name="broj_ulice" type="xs:int"/>
+                            <xs:element name="postanski_broj" type="xs:int"/>
+                            <xs:element name="mesto" type="xs:string"/>
+                            <xs:element name="drzava" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="kontakt">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="telefon" type="xs:int"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="faks" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podaci_o_podnosiocu">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:sequence>
+                    <xs:element name="ime" type="xs:string"/>
+                    <xs:element name="prezime" type="xs:string"/>
+                    <xs:element name="adresa">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ulica" type="xs:string"/>
+                                <xs:element name="broj_ulice" type="xs:int"/>
+                                <xs:element name="postanski_broj" type="xs:int"/>
+                                <xs:element name="mesto" type="xs:string"/>
+                                <xs:element name="drzava" type="xs:string"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:sequence>
+                    <xs:element name="poslovno_ime"/>
+                </xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="lice" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="zajednicki_predstavnik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="kontakt">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="telefon" type="xs:int"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="faks" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="lice" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podaci_o_znaku">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tipovi_ziga">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="individualni_zig"/>
+                            <xs:element name="kolektivni_zig"/>
+                            <xs:element name="zig_garancije"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tipovi_znaka">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="verbalni_znak"/>
+                            <xs:element name="graficki_znak"/>
+                            <xs:element name="kombinovani_znak"/>
+                            <xs:element name="trodimenzionalni_znak"/>
+                            <xs:element name="druga_vrsta_znaka"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="izgled_znaka"/>
+                <xs:element name="naznacenje_boje"/>
+                <xs:element name="transliteracija_znaka"/>
+                <xs:element name="prevod_znaka"/>
+                <xs:element name="opis_znaka" type="xs:string"/>
+                <xs:element name="brojevi_klasa_robe_i_usluga">
+                    <xs:complexType>
+                        <xs:attribute name="klasa"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="zatrazeno_pravo_prvenstva_i_osnov"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tipovi_znaka">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="verbalni_znak"/>
+                <xs:element name="graficki_znak"/>
+                <xs:element name="kombinovani_znak"/>
+                <xs:element name="trodimenzionalni_znak"/>
+                <xs:element name="druga_vrsta_znaka"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="podaci_o_placanju">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="osnovna_taksa" type="xs:int"/>
+                <xs:element name="klasa">
+                    <xs:complexType>
+                        <xs:attribute name="tip"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="za_graficko_resenje" type="xs:boolean"/>
+                <xs:element name="ukupno" type="xs:int"/>
+                <xs:element name="potpis_podnosioca_zahteva"/>
+                <xs:element name="pecat"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prilozi">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="primerak_znaka"/>
+                <xs:element name="spisak_robe_i_usluga"/>
+                <xs:element name="punomocje"/>
+                <xs:element name="generalno_punomocje_ranije_prilozeno" type="xs:boolean"/>
+                <xs:element name="opsti_akt_o_kolektivnom_zigu_ili_zigu_garancije"/>
+                <xs:element name="dokaz_o_pravu_prvenstva"/>
+                <xs:element name="dokaz_o_uplati_takse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

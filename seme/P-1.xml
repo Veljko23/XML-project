@@ -1,0 +1,104 @@
+<zahtev_za_priznanje_patenta>
+    <podaci_o_zavodu>
+        <broj_prijave></broj_prijave>
+        <datum_prijema></datum_prijema>
+        <datum_podnosenja></datum_podnosenja>
+        <naziv>Zavod za intelektualnu svojinu</naziv>
+        <adresa>
+            <drzava>Republika Srbija</drzava>
+            <mesto>Beograd</mesto>
+            <ulica>Kneginje Ljubice</ulica>
+            <broj>5</broj>
+        </adresa>
+    </podaci_o_zavodu>
+    <podnosilac_prijave>
+        <podnosilac_pronalazac tip="boolean">true</podnosilac_pronalazac>
+        <ime></ime>
+        <prezime></prezime>
+        <poslovno_ime></poslovno_ime>
+        
+        <adresa>
+            <drzava></drzava>
+            <ulica></ulica>
+            <broj></broj>
+            <postanski_broj></postanski_broj>
+            <mesto></mesto>
+        </adresa>
+        
+        <telefon></telefon>
+        <faks></faks>
+        <email></email>
+        
+        <drzavljanstvo tip="fizicko_lice"></drzavljanstvo>
+        
+    </podnosilac_prijave>
+    
+    <pronalazac>
+        <pronalazac_ne_zeli_da_bude_naveden tip="boolean"></pronalazac_ne_zeli_da_bude_naveden>
+        <ime></ime>
+        <prezime></prezime>
+        <adresa>
+            <drzava></drzava>
+            <ulica></ulica>
+            <broj></broj>
+            <postanski_broj></postanski_broj>
+            <mesto></mesto>
+        </adresa>
+        <telefon></telefon>
+        <faks></faks>
+        <email></email>
+    </pronalazac>
+    
+    <punomocnik_ili_predstavnik>
+        <punomocnik_za_zastupanje></punomocnik_za_zastupanje>
+        <punomocnik_za_prijem_pismena></punomocnik_za_prijem_pismena>
+        <zajednicki_predstavnik></zajednicki_predstavnik>
+        
+        <ime></ime>
+        <prezime></prezime>
+        <poslovno_ime></poslovno_ime>
+        
+        <adresa>
+            <ulica></ulica>
+            <broj></broj>
+            <postanski_broj></postanski_broj>
+            <mesto></mesto>
+        </adresa>
+        
+        <telefon></telefon>
+        <email></email>
+    </punomocnik_ili_predstavnik>
+    
+    <adresa>
+        <ulica></ulica>
+        <broj></broj>
+        <postanski_broj></postanski_broj>
+        <mesto></mesto>
+    </adresa>
+    
+    <dostava tip="elektronska"></dostava>
+    <dostava tip="papirna"></dostava>
+    
+    <povezani_zahtev>
+        <dopunska_prijava></dopunska_prijava>
+        <izdvojena_prijava></izdvojena_prijava>
+        <broj_prvobitne_prijave></broj_prvobitne_prijave>
+        <datum_podnosenja_prvobitne_prijave></datum_podnosenja_prvobitne_prijave>
+    </povezani_zahtev>
+    
+    <zahtev_za_priznanje_prava_prvenstva_iz_ranijih_prijava>
+        <prijava>
+            <datum_podnosenje_ranije_prijave></datum_podnosenje_ranije_prijave>
+            <broj_ranije_prijave></broj_ranije_prijave>
+            <dvoslovna_oznaka_drzave_ili_organizacije></dvoslovna_oznaka_drzave_ili_organizacije>
+        </prijava>
+        
+        <prijava>
+            <datum_podnosenje_ranije_prijave></datum_podnosenje_ranije_prijave>
+            <broj_ranije_prijave></broj_ranije_prijave>
+            <dvoslovna_oznaka_drzave_ili_organizacije></dvoslovna_oznaka_drzave_ili_organizacije>
+        </prijava>
+    </zahtev_za_priznanje_prava_prvenstva_iz_ranijih_prijava>
+    
+</zahtev_za_priznanje_patenta>
+
