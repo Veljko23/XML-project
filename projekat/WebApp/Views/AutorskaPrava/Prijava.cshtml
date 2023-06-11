@@ -1,0 +1,304 @@
+﻿@using Business.Models;
+@model AutorskoPravoModel
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h3>Download Page:</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/AutorskaPrava/DownloadXHTMLZahtev" > <button class="btn btn-primary">XHTML</button></a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/AutorskaPrava/DownloadZahtev"> <button class="btn btn-success">PDF</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h3>Download Metadata:</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/AutorskaPrava/DownloadMetadataJson"> <button class="btn btn-success">JSON</button></a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/AutorskaPrava/DownloadMetadataRdf"> <button class="btn btn-danger">RDF</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<input type="hidden" id="autorskoPravoId" value="@Model.Id" />
+
+@if(User.IsInRole("Admin") && Model.Status == Domain.Entities.Status.Podnesen)
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#finishModal">Podnesi rešenje</button>
+        </div>
+    </div>
+}
+else
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @if(Model.Status == Domain.Entities.Status.Odobren)
+            {
+                <h1 class="text-success">Zahtev je odobren.</h1>
+            }
+            else if(Model.Status == Domain.Entities.Status.Podnesen)
+            {
+                <h1 class="text-dark">Zahtev je podnet.</h1>
+            }
+            else
+            {
+                <h1 class="text-danger">Zahtev je odbijen.</h1>
+            }
+        </div>
+    </div>
+}
+
+<div class="row" style="border: 1px solid black; margin-top: 20px" id="documentDiv">
+    <div class="col-md-12">
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h4> ZAVOD ZA INTELEKTUALNU SVOJINU</h4>
+                <h5>Beograd, Knjeginje Ljubice 5</h5>
+            </div>
+            <div class="col-md-6">
+                <h4> OBRAZAC A-1</h4>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px; margin-bottom: 50px">
+            <div class="col-md-12 text-center">
+                <h4>ZAHTEV ZA UNOŠENJE U EVIDENCIJU I DEPONOVANJE AUTORSKIH PRAVA</h4>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h5>
+                    1) Podnosilac - ime, prezime, adresa i državljanstvo autora ili drugog nosioca autorskog prava ako je podnosilac fizičko lice,
+                    odnosno poslovno ime i sedište nosioca autorskog prava ako je podnosilac pravno lice*:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 300px" id="podnosilacValue">@Model.PodnosilacDetalji</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 20px">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h5 for="podnosilacTelefon">Telefon: </h5>
+                        <input disabled type="text" class="form-control" id="podnosilacTelefon" value="@Model.Telefon" />
+                    </div>
+                    <div class="col-md-7">
+                        <h5 for="podnosilacEmail">Email: </h5>
+                        <input disabled type="email" class="form-control" id="podnosilacEmail" value="@Model.Email" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    2) Pseudonim ili znak autora, (ako ga ima):
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="pseudonimValue">@Model.Pseudonim</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    3) Ime, prezime i adresa punomoćnika, ako se prijava podnosi preko punomoćnika:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="punomocnikDetalji">@Model.Punomocnik</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    4) Naslov autorskog dela, odnosno alternativni naslov, ako ga ima, po kome autorsko delo može da se identifikuje*:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="naslovAutorskogDela">@Model.Naslov</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    5) Podaci o naslovu autorskog dela na kome se zasniva delo prerade, ako je u pitanju autorsko delo prerade, kao i podataka o autoru izvornog dela:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="podaciONaslovuAutorskogDela">@Model.PodaciONaslovu</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    6) Podaci o vrsti autorskog dela (književno delo, muzičko delo, likovno delo, računarski program i dr.)*:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="vrstaAutorskogDela">@Model.PodaciOVrsti</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    7) Podaci o formi zapisa autorskog dela (štampani tekst, optički disk i slično)*:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="formaAutorskogDela">@Model.PodaciOFormiZapisa</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    8) Podaci o autoru ako podnosilac prijave iz tačke 1. ovog zahteva nije autori i to: prezime, ime, adresa, i državljanstvo autora (grupe autora ili koautora),
+                    a ako su u pitanju jedan ili više autora koji nisu živi, imena autora i godine smrti autora, a ako je u pitanju autorsko delo anonimnog autora navod da je
+                    autorsko delo delo anonimnog autora:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 200px" id="podaciOAutoruDetalji">@Model.PodaciOAutoru</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    9) Podaci da li je u pitanju autorsko delo stvoreno u radnom odnosu:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="daLiJeRadniOdnos">@Model.DaLiJeURadnomODnosu</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 30px">
+                <h5>
+                    10) Način korišćenja autorskog dela ili nameravani način korišćenja autorskog dela:
+                </h5>
+
+                <textarea disabled class="form-control" style="margin-top: 20px; height: 100px" id="nacinKoriscenjaAutorskogDela">@Model.NacinKoriscenja</textarea>
+            </div>
+            <div class="col-md-12" style="margin-top: 50px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>
+                            11)
+                        </h5>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea disabled class="form-control" style="margin-top: 20px; height: 50px" id="potpis">@Model.PodnosilacPrijavePotpis</textarea>
+                        <h5 style="margin-top: 10px">Podnosilac prijave, nosilac prava</h5>
+                        <h6>(mesto za potpis fizičkog lica, odnosno potpis zastupnika pravnog lica ili ovlašćenog predstavnika u pravnom licu)*</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 40px">
+                <h5>
+                    12)  Prilozi koji se podnose uz zahtev
+                </h5>
+
+                @if(Model.FajloviPutanje.Count > 0)
+                {
+                    foreach (var filename in Model.FajloviPutanje)
+                    {
+                        <a href="@Url.Action("Download", "AutorskaPrava", new { filename })">@filename.Replace("C:\\autorskaprava\\", "")</a>
+
+                        <br />
+                    }
+                }
+            </div>
+            <div class="col-md-12 text-center" style="margin-top: 50px">
+                <h5><b>POPUNJAVA ZAVOD</b> </h5>
+
+                <div class="row">
+                    <div class="col-md-12" style="text-align: left">
+                        <br />
+                        <br />
+                        <h6><b>Prilozi uz prijavu: </b></h6>
+                        <br />
+                        <h6>opis autorskog dela (ako je delo podneto na optičkom disku); </h6>
+                        <br />
+                        <h6>primer autorskog dela (slika, video zapis, audio zapis); </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: 80px">
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4" style="border: 1px solid black">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Broj prijave</h5>
+                                <h4><b>A- @Model.Sifra</b></h4>
+                                <hr />
+                                <h5>Datum podnošenja: </h5>
+                                <input type="text" disabled class="form-control" value="@Model.DatumPodnosenja" id="datumPodnosenja" />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="finishModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Podnesi rešenje</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select id="rezultatZahteva" name="rezultatZahteva" onchange="AutorskoPravo.tipResenja()" class="form-control" style="margin-bottom: 20px">
+                                <option value="0" selected>Odbij zahtev</option>
+                                <option value="1">Odobri zahtev</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" id="odobrenZahtev" style="display: none">
+                        <div class="col-md-12 mb-3">
+                            <label for="datumOdobravanja" class="form-label">Datum:</label>
+                            <input type="date" class="form-control" id="datumOdobravanja" name="datumOdobravanja">
+                        </div> 
+                        <div class="col-md-12 mb-3">
+                            <label for="sifraOdobrenjaZahteva" class="form-label">Šifra autorskog dela:</label>
+                            <input type="text" class="form-control" id="sifraOdobrenjaZahteva" value="@Model.Sifra" name="sifraOdobrenjaZahteva">
+                        </div>
+                        <div class="row">                        <div class="col-md-6 mb-3">
+                            <label for="sluzbenikImeOdobrenje" class="form-label">Službenik Ime</label>
+                                <input type="text" class="form-control" id="sluzbenikImeOdobrenje" name="sluzbenikImeOdobrenje">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="sluzbenikPrezimeOdobrenje" class="form-label">Službenik Prezime</label>
+                                <input type="text" class="form-control" id="sluzbenikPrezimeOdobrenje" name="sluzbenikPrezimeOdobrenje">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row" id="odbijenZahtev" style="display: block">
+                        <div class="col-md-12 mb-3">
+                            <label for="datumOdbijanja" class="form-label">Datum:</label>
+                            <input type="date" class="form-control" id="datumOdbijanja" name="datumOdbijanja">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="sifraOdbijanjaZahteva" class="form-label">Šifra autorskog dela:</label>
+                            <input type="text" class="form-control" id="sifraOdbijanjaZahteva" value="@Model.Sifra" name="sifraOdbijanjaZahteva">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="razlogOdbijanja" class="form-label">Razlog odbijanja:</label>
+                            <textarea class="form-control" id="razlogOdbijanja" name="razlogOdbijanja"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="sluzbenikImeOdbijanje" class="form-label">Službenik Ime</label>
+                                <input type="text" class="form-control" id="sluzbenikImeOdbijanje" name="sluzbenikImeOdbijanje">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="sluzbenikPrezimeOdbijanje" class="form-label">Službenik Prezime</label>
+                                <input type="text" class="form-control" id="sluzbenikPrezimeOdbijanje" name="sluzbenikPrezimeOdbijanje">
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AutorskoPravo.podnesiResenje()" id="searchButton">Podnesi</button>
+            </div>
+        </div>
+    </div>
+</div>

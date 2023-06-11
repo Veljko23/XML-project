@@ -1,0 +1,186 @@
+﻿@using Business.Models;
+@model List<AutorskoPravoModel>
+
+@{
+    var pojam = ViewBag.Pojam;
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h2>Sve prijave autorskih prava</h2>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-md-4">
+        <input type="text" id="pretraziPrijaveInput" value="@pojam" class="form-control" placeholder="Pretraži prijave...">
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-primary" onclick="AutorskoPravo.pretraziPrijave()">
+            Pretraži
+        </button>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#searchModal">
+            Detaljna pretraga
+        </button>
+    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-5" style="text-align: right">
+            <div class="row">
+            <div class="col-md-4" style="text-align: left">
+                <label for="startDate">Od</label>
+                <input type="date" id="startDate" class="form-control" />
+            </div>
+            <div class="col-md-4" style="text-align: left">
+                <label for="endDate">Do</label>
+                <input type="date" id="endDate" class="form-control" />
+            </div>
+            <div class="col-md-4" style="margin-top: 22px">
+                <button class="btn btn-success" onclick="AutorskoPravo.generisiIvestaj()">Generiši izveštaj</button>
+            </div>
+        </div>
+    </div>
+    }
+
+</div>
+<div class="row" style="margin-top: 50px">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Šifra</th>
+                <th>Naslov</th>
+                <th>Autor</th>
+                <th>Email</th>
+                <th>Podneto Datuma</th>
+                <th>Status</th>
+                <th>Detalji</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody id="svePrijavaBody">
+            @foreach (var pravo in Model)
+            {
+                <tr>
+                    <td>@pravo.Id</td>
+                    <td>@pravo.Sifra</td>
+                    <td>@pravo.Naslov</td>
+                    <td>@pravo.PodaciOAutoru</td>
+                    <td>@pravo.Email</td>
+                    <td>@pravo.DatumPodnosenja.ToString()</td>
+                    <td class="@(pravo.Status == Domain.Entities.Status.Odobren ? "text-success" : pravo.Status == Domain.Entities.Status.Odbijen ? "text-danger" : "text-primary")" >@pravo.Status</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">
+                            <a href="/AutorskaPrava/Prijava?id=@pravo.Id" style="color: white;text-decoration: none">Detalji</a>
+                        </button>
+                    </td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Pretraga po metapodacima</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select id="searchType" name="searchType" class="form-control" style="margin-bottom: 20px" title="Odaberi tip pretrage...">
+                                <option value="0" selected>AND</option>
+                                <option value="1">OR</option>
+                                <option value="2">NOT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="PodnosilacDetalji" class="form-label">Podnosilac Detalji</label>
+                        <input type="text" class="form-control" id="PodnosilacDetalji" name="PodnosilacDetalji">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Telefon" class="form-label">Telefon</label>
+                        <input type="text" class="form-control" id="Telefon" name="Telefon">
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="Email" name="Email">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Pseudonim" class="form-label">Pseudonim</label>
+                        <input type="text" class="form-control" id="Pseudonim" name="Pseudonim">
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="Punomocnik" class="form-label">Punomocnik</label>
+                        <input type="text" class="form-control" id="Punomocnik" name="Punomocnik">
+                    </div>
+                        <div class="col-md-6 mb-3">
+                        <label for="Naslov" class="form-label">Naslov</label>
+                        <input type="text" class="form-control" id="Naslov" name="Naslov">
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="PodaciONaslovu" class="form-label">Podaci O Naslovu</label>
+                        <input type="text" class="form-control" id="PodaciONaslovu" name="PodaciONaslovu">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="PodaciOVrsti" class="form-label">Podaci O Vrsti</label>
+                        <input type="text" class="form-control" id="PodaciOVrsti" name="PodaciOVrsti">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="PodaciOFormiZapisa" class="form-label">Podaci O Formi Zapisa</label>
+                        <input type="text" class="form-control" id="PodaciOFormiZapisa" name="PodaciOFormiZapisa">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="PodaciOAutoru" class="form-label">Podaci O Autoru</label>
+                        <input type="text" class="form-control" id="PodaciOAutoru" name="PodaciOAutoru">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="DaLiJeURadnomODnosu" class="form-label">Da Li Je U Radnom Odnosu</label>
+                        <input type="text" class="form-control" id="DaLiJeURadnomODnosu" name="DaLiJeURadnomODnosu">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="NacinKoriscenja" class="form-label">Nacin Koriscenja</label>
+                        <input type="text" class="form-control" id="NacinKoriscenja" name="NacinKoriscenja">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="PodnosilacPrijavePotpis" class="form-label">Podnosilac Prijave Potpis</label>
+                        <input type="text" class="form-control" id="PodnosilacPrijavePotpis" name="PodnosilacPrijavePotpis">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="DatumPodnosenja" class="form-label">Datum Podnosenja</label>
+                        <input type="date" class="form-control" id="DatumPodnosenja" name="DatumPodnosenja">
+                    </div>
+                    </div>
+                    <div class="col-md-6 mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="Zaveden" name="Zaveden">
+                        <label class="form-check-label" for="Zaveden">Zaveden</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AutorskoPravo.pretraziPrijaveMetapodaci()" id="searchButton">Search</button>
+            </div>
+        </div>
+    </div>
+</div>

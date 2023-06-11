@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "nXBn5Sl5yH+T6XoTUd0m2N8+9Y1TbjDDBILMctfIfVMt/GXcO6LeYr4A5Q/YxW2944ys8UnetHLNN9Tyit4yuA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\borin\\OneDrive\\Desktop\\projekat\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\borin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\borin\\.nuget\\packages\\treblle.net.core\\1.0.8\\treblle.net.core.1.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
